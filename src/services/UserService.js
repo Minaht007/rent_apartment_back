@@ -1,3 +1,5 @@
+//src/services/UserService.js
+
 import User from '../models/User.js'
 import bcrypt from 'bcryptjs'
 
@@ -33,7 +35,7 @@ class UserService {
         const newUser = await User.create({
             "login": user.login,
             "password": hashedPassword,
-            "role": user.role
+            "role": "USER"
         })
         return newUser
     }

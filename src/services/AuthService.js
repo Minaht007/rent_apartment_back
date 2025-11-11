@@ -1,4 +1,5 @@
-// services/AuthService.js
+// src/services/AuthService.js
+
 import UserService from './UserService.js'
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
@@ -13,6 +14,7 @@ class AuthService {
         )
     }
 
+    // POST
     async register({ login, password }) {
         const candidate = await UserService.findUser(login)
         if (candidate) throw new Error("User already exists")
@@ -20,6 +22,7 @@ class AuthService {
         return await UserService.createUser({ login, password, role: 'USER' })
     }
 
+    // POST
     async login({ login, password }) {
         const user = await UserService.findUser(login)
         if (!user) throw new Error("User not found")

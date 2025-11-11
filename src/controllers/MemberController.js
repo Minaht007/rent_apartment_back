@@ -3,6 +3,7 @@ import MemberService from '../services/MemberService.js';
 
 class MemberController {
 
+    // POST /api/v1/members → создать
     async create(req, res) {
         try {
             const member = await MemberService.createMember(req.body, req.file);
@@ -12,6 +13,7 @@ class MemberController {
         }
     }
 
+    // GET /api/v1/members → получить список
     async getAll(req, res) {
         try {
             const members = await MemberService.getAllMembers();
@@ -21,6 +23,7 @@ class MemberController {
         }
     }
 
+    // GET /api/v1/members → получить по ID
     async getById(req, res) {
         try {
             const member = await MemberService.getMemberById(req.params.id);
@@ -30,6 +33,7 @@ class MemberController {
         }
     }
 
+    // PUT /api/v1/members → обновить
     async update(req, res) {
         try {
             const member = await MemberService.updateMember(req.params.id, req.body, req.file);
@@ -39,6 +43,7 @@ class MemberController {
         }
     }
 
+    // PUT /api/v1/members → удалить
     async delete(req, res) {
         try {
             const result = await MemberService.deleteMember(req.params.id);
